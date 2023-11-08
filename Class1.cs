@@ -30,10 +30,9 @@ namespace TemporaryServerJoinFix
         }
 
         [HarmonyPatch(typeof(GameNetworkManager), "Singleton_OnClientDisconnectCallback")]
-        [HarmonyPrefix]
+        [HarmonyPostfix]
         static void FixBadServerJoin()
         {
-            //___Instance.ResetSavedGameValues();
             SceneManager.LoadScene("MainMenu");
             mls.LogInfo("Loading Main Menu");
         }
